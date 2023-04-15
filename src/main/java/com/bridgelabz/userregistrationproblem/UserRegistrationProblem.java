@@ -26,9 +26,34 @@ public class UserRegistrationProblem {
 		return m.matches();
 	}
 
+	/*
+	 * Name - Last name starts with Cap and has minimum 3 character
+	 */
+	public static boolean isValidUserLastName(String lastName) {
+		// Regex to check valid userlastName.
+		String regex = "^[A-Za-z]\\w{3,29}$";
+		// Compile the ReGex
+		Pattern p = Pattern.compile(regex);
+		// If the userlastName is empty
+		// return false
+		if (lastName == null) {
+			return false;
+		}
+		// Pattern class contains matcher() method
+		// to find matching between given userlastName
+		// and regular expression.
+		Matcher m = p.matcher(lastName);
+		// Return if the userlastName
+		// matched the ReGex
+		return m.matches();
+	}
+
 	public static void main(String[] args) {
 		String firstName = "Neeta"; // firstname
 		System.out.println(isValidUserFirstName(firstName));
+
+		String lastName = "Mourya"; // lastName
+		System.out.println(isValidUserLastName(lastName));
 	}
 
 }
