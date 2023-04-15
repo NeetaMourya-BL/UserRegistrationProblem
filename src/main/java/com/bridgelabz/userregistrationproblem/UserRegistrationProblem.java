@@ -72,6 +72,19 @@ public class UserRegistrationProblem {
 		return m.matches();
 	}
 
+	/*
+	 * As a User need to follow pre-defined Mobile Format - E.g. 91 9919819801 -
+	 * Country code follow by space and 10 digit number
+	 */
+	public static boolean isValidUserMobileNumber(String userMobileNumnber) {
+		Pattern ptrn = Pattern.compile("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$");
+		// the matcher() method creates a matcher that will match the given input
+		// against this pattern
+		Matcher match = ptrn.matcher(userMobileNumnber);
+		// returns a boolean value
+		return match.matches();
+	}
+
 	public static void main(String[] args) {
 		String firstName = "Neeta"; // firstname
 		System.out.println(isValidUserFirstName(firstName));
@@ -81,6 +94,9 @@ public class UserRegistrationProblem {
 
 		String userEmail = "abc.xyz@bl.co.in"; // userEmail
 		System.out.println(isValidUserEmail(userEmail));
+
+		String userMobileNumnber = "91 9919819801"; // userMobileNumnber
+		System.out.println(isValidUserMobileNumber(userMobileNumnber));
 	}
 
 }
