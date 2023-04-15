@@ -48,12 +48,39 @@ public class UserRegistrationProblem {
 		return m.matches();
 	}
 
+	/*
+	 * As a User need to enter a valid email
+	 */
+	public static boolean isValidUserEmail(String userEmail) {
+		// Regex to check valid useremail.
+		String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+
+		// Compile the ReGex
+		Pattern p = Pattern.compile(regex);
+
+		// If the useremail is empty
+		// return false
+		if (userEmail == null) {
+			return false;
+		}
+		// Pattern class contains matcher() method
+		// to find matching between given useremail
+		// and regular expression.
+		Matcher m = p.matcher(userEmail);
+		// Return if the useremail
+		// matched the ReGex
+		return m.matches();
+	}
+
 	public static void main(String[] args) {
 		String firstName = "Neeta"; // firstname
 		System.out.println(isValidUserFirstName(firstName));
 
 		String lastName = "Mourya"; // lastName
 		System.out.println(isValidUserLastName(lastName));
+
+		String userEmail = "abc.xyz@bl.co.in"; // userEmail
+		System.out.println(isValidUserEmail(userEmail));
 	}
 
 }
